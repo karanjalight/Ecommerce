@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!--Carousel Wrapper-->
+  <div id="carousel-example-1z" class="carousel slide carousel-fade pt-4" data-ride="carousel">
+
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+
+      <!--First slide-->
+      <div class="carousel-item active">
+        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%282%29.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            
+          
+              <a target="_blank" href="/" class="btn btn-outline-white btn-lg">Shop Now
+                <i class="fas fa-graduation-cap ml-2"></i>
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/First slide-->
+
+      <!--Second slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%283%29.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+
+
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/Second slide-->
+
+      <!--Third slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%285%29.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/Third slide-->
+
+    </div>
+    <!--/.Slides-->
+
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+
+  </div>
+
+<main>
+    <div class="container">
+
+      <!--Navbar-->
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+
+        <!-- Navbar brand -->
+        <span class="navbar-brand">Categories : </span>
+        
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"> <i class="fa fa-caret-down"></i></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+          <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">All     </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?category=C">Cuttleries</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?category=O">Storage and Organisation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?category=S">Cleaning Supplies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?category=B">Bathroom</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?category=E">Beddings</a>
+            </li>
+          </ul>
+          <!-- Links -->
+          <!--
+          <form class="form-inline">
+            <div class="md-form my-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            </div>
+          </form>
+          -->
+        </div>
+        <!-- Collapsible content -->
+
+      </nav>
+      <!--/.Navbar-->
+<!--dropdown menu-->
+
+
+
+
+<!--dropdown menu-->
+
+
+      <!--Section: Products v.3-->
+      <section class="text-center mb-4">
+
+        <!--Grid row-->
+        <div class="row wow fadeIn">
+         
+          {% for item in ls %}
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4">
+
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <a href="{% url 'product' item.id %}" class="grey-text">
+              <div class="view overlay">
+                <img src="{{ item.image.url }}" class="card-img-top" alt="" style="width: 250px; height: 200px;">
+                
+              
+              </div>
+              <!--Card image-->
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                
+                  <h1>{{ item.item_name }}</h1>
+
+                  
+                  
+                
+                <p class="price" style=""><h4>
+                  <strong>KSh{{ item.price }}</strong></h4></p>
+                
+                
+
+                <h5 class="font-weight-bold blue-text">
+                  
+                  {% if item.discount_price %}
+                 <strike> KSh{{ item.discount_price }}</strike>
+                  {% else %}
+                  {{ item.price }}
+                  {% endif %}
+                </a>
+                </h5>
+               <!-- <a href="{{ object.get_add_to_cart_url }}" class="grey-text">
+                <p style="border-style: solid; border-radius: 24px;">Add to Cart  <i class="fa fa-shopping-cart w3-margin-right"></i></p>
+                </a>
+              -->
+                
+
+              </div>
+              <!--Card content-->
+
+            </div>
+            <!--Card-->
+
+          </div>
+          <!--Grid column-->
+
+          {% endfor %}
+         
+
+        </div>
+        <!--Grid row-->
+
+
+
+
+       
+
+      </section>
+      <!--Section: Products v.3-->
+
+      <!--Pagination-->
+     
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+{% endblock content %}

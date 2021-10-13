@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br><br>
+<br><br>
+
+    <div class="sign-up">
+   
+
+      <div class="registration-form" style="text-align: center;"> 
+        <h1>Sign-In</h1>
+        <form action="#" method="POST">
+          {% csrf_token %}
+          <!-- <p> Email:</p>
+          <input type="email" name="email" placeholder="Email"> -->
+         <p> Username: <br>{{form.username}}</p>
+
+
+
+
+
+        <p>    Password:<br> {{form.password}}</p>
+          <a href="/">
+        <button type="submit" style="border: 0px; border-radius: 15px;">Login</button>
+
+        <br><br><br>
+          </a>
+        </form>
+      </div>
+      
+    </div>
+  
+  </body>
+  
+  
+  
+  </DOCTYPE>
+  {% endblock content %}

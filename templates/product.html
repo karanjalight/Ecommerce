@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!--Main layout-->
+  <main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+
+      {% for p in pd %}
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+      
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+          <p class="lead font-weight-bold">{{ p.item_name }}</p>
+
+          <img src="{{ p.image.url }}" class="img-fluid" alt="" style="width: 850px; height: 500px;"
+          >
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-4">
+
+            <div class="mb-3">
+              <a href="">
+                <span class="badge purple mr-1">{{ object.get_category_display }}</span>
+              </a>
+              <a href="">
+                <span class="badge blue mr-1">{{ object.get_label_display }}</span>
+              </a>
+            </div>
+
+            <p class="lead">
+
+            <span class="mr-1">
+              <strong>Price: {{ p.price }}</strong>
+            </span><br>
+            <span>Discount Price: {{ p.discount_price }}</span>
+
+            <!-- {% if object.discount_price %}
+              <span class="mr-1">
+              <del>${{ object.price }}</del>
+              </span>
+              <span>${{ object.discount_price }}</span>
+            {% else %}
+             <span>${{ object.price }}</span>
+            {% endif %} -->
+
+            </p>
+
+            
+
+            <p> Description: <br>{{ p.description }}</p>
+
+            
+            <!--{% comment %} <form class="d-flex justify-content-left">
+              <!-- Default input -->
+              <!--
+              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
+              <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
+                <i class="fas fa-shopping-cart ml-1"></i>
+              </button>
+
+            </form> {% endcomment %}
+
+            <a href="{{ object.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p" >Add to cart
+                <i class="fas fa-shopping-cart ml-1"></i>
+            </a>
+
+            {{ object.get_quantity_in_chart }}
+            <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger btn-md my-0 p" >Remove From cart
+                <i class="fas fa-trash ml-1"></i>
+            </a>
+           
+          -->
+            <!--Card image-->
+
+            {% if user.is_authenticated %}
+
+
+            <!--
+              <a href="{% url 'checkout'  %}" class="grey-text">
+              
+            <button class="btn btn-primary btn-lg btn-block">Continue to checkout</button>
+              -->
+
+              <a href="tel:0708683046" onclick="ga('send', 'event', { eventCategory: 'Contact', eventAction: 'Call', eventLabel: 'Mobile Button'});"><p class="call-button"  class="btn btn-primary btn-md my-0 p" 
+                style="border:5px solid rgba(116, 55, 124, 0.993); text-align: center; margin: 22px; border-radius: 12px; background-color:rgb(66, 202, 32) ; color: #000;"
+                >Call To Order &nbsp<i class="fas fa-phone"></i></p></a>
+
+
+          
+            </a>
+
+            {% else %}
+
+
+            <!--
+            <a class="nav-link waves-effect" href="{% url 'signup' %}"> Sign-Up &nbsp<i class="fas fa-sign-in-alt"></i></a>
+            -->
+            
+
+            
+            <a href="{% url 'signup' %}" class="btn btn-primary btn-md my-0 p" >
+              Sign-Up &nbsp
+              <i class="fas fa-sign-in-alt"></i>
+          </a>
+            
+
+
+          </div>
+           {% endif %}
+
+          </div>
+          <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 text-center">
+
+          <h4 class="my-4 h4">Kitchen space</h4>
+
+       
+      <!--Grid row-->
+    {% endfor %}
+    </div>
+  </main>
+  <!--Main layout-->
+
+{% endblock content %}
