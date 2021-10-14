@@ -13,6 +13,7 @@ from django.contrib.auth import views as auth_views
 
 from django.views.static import serve
 from django.conf.urls import url
+from django.conf import settings
 
 urlpatterns = [
     path('', include('core.urls', namespace='core')), 
