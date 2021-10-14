@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-tff0y_ylwa+=zuyw^&bc1t1z1-v)s@=m2hjo__$#bs_&!d!cvq
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'onlineshopfreshi.herokuapp.com']
 
 
 # Application definition
