@@ -9,6 +9,7 @@ from django.contrib.auth import get_user_model
 
 
 CATEGORY = (
+    ('H', 'Electronics'),
     ('S', 'Cleaning and supplies'),
     ('O', 'Storage Supplies'),
     ('C', 'Cuttleries'),
