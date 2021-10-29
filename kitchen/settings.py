@@ -1,5 +1,5 @@
 import dj_database_url
-import dotenv
+import python_dotenv
 import django_heroku
 import os
 
