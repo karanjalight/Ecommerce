@@ -79,7 +79,7 @@ url = 'postgres://jyuixnyoefqwcd:6c4faf6c0e81622d312d9e01d90e263049c8e36f1a1b715
 
 import dj_database_url
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-DATABASES['default'] = dj_database_url.config(default=url}
+DATABASES['default'] = dj_database_url.config(default=url)
 
 
 # Password validation
