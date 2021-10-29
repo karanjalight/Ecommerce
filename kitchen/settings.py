@@ -1,13 +1,23 @@
+import dj_database_url
+import dotenv
+import django_heroku
+import os
+
 from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# This is new:
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
+
 
 SECRET_KEY = 'django-insecure-tff0y_ylwa+=zuyw^&bc1t1z1-v)s@=m2hjo__$#bs_&!d!cvq'
 
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'onlineshopfreshi.herokuapp.com']
 
@@ -39,7 +49,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'kitchen.urls'
 
-import os
 ... 
 
 TEMPLATES = [
@@ -75,7 +84,11 @@ DATABASES = {
     }
 }
 
-url = 'postgres://jyuixnyoefqwcd:6c4faf6c0e81622d312d9e01d90e263049c8e36f1a1b715bd0c7e3f5c6b79f5'
+DATABASE = {}
+#import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
+
 
 #import dj_database_url
 #db_from_env = dj_database_url.config(conn_max_age=600)
@@ -140,3 +153,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_REDIRECT_URL = 'home'
+
+django_heroku.settings(locals())
+
+options = DATABASES['default'].get('OPTIONS', {})
+options.pop('sslmode', None)
