@@ -75,6 +75,12 @@ DATABASES = {
     }
 }
 
+url = 'postgres://jyuixnyoefqwcd:6c4faf6c0e81622d312d9e01d90e263049c8e36f1a1b715bd0c7e3f5c6b79f5'
+
+import dj_database_url
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES['default'] = dj_database_url.config(default=url}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
