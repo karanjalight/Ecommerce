@@ -1,10 +1,14 @@
 from django.conf import settings
 from django.db import models
 from django.shortcuts import reverse
-from django_countries.fields import CountryField
+
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.contrib.auth import get_user_model
+
+import cloudinary
+from cloudinary.models import CloudinaryField
+
 
 
 
@@ -25,7 +29,9 @@ LABEL = (
 
 class Item(models.Model):
     item_name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to="products")
+    image = CloudinaryField('image')
+    #image=cloudinary.models.CloudinaryField('image')
+    #image = models.ImageField(upload_to="products/")
     price = models.FloatField()
     discount_price = models.FloatField(blank=True, null=True)
     category = models.CharField(choices=CATEGORY, max_length=20)
