@@ -15,6 +15,9 @@ from django.views.static import serve
 from django.conf.urls import url
 from django.conf import settings
 
+from django.views.generic import RedirectView
+from django.conf.urls import url
+
 urlpatterns = [
     path('', include('core.urls', namespace='core')), 
     path('', Home, name='home'),
@@ -26,7 +29,7 @@ urlpatterns = [
   # path('Checkout/<int:pk>/', CheckoutView, name='checkout'),
     path('checkout', CheckoutView, name='checkout'),
     path('signup', Signup, name='signup'),
-    
+    url(r'^favicon\.ico$',RedirectView.as_view(url='/static/images/favicon.ico')),
 
     path('order-summary', OrderSummaryView.as_view(), name='order-summary'),
     path('add-to-cart/<pk>/', add_to_cart, name='add-to-cart'),
