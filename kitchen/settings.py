@@ -3,6 +3,9 @@ import dotenv
 import django_heroku
 import os
 
+import cloudinary
+
+import cloudinary.api
 
 
 
@@ -36,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #'cloudinary',
+    'cloudinary',
     #'cloudinary_storage',
     
    'core',
@@ -172,3 +175,9 @@ options.pop('sslmode', None)
 
 
 
+cloudinary.config( 
+  cloud_name = "ambunya", 
+  api_key = "397132187797718", 
+  api_secret = "HsOFJRjJmyRdoIvmlrpAFGCxHnU",
+ 
+)
