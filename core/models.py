@@ -20,7 +20,7 @@ CATEGORY = (
     ('C', 'Cuttleries'),
     ('B', 'Bathroom'),
     ('E', 'Beddings'),
-    
+    ('G', 'Gas'),
 )
 
 LABEL = (
